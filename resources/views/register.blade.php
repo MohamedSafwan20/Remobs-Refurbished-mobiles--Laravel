@@ -1,8 +1,9 @@
 @extends('layouts.root')
 
 @section('content')
-<div class="container">
-  <form style="width: 55%; margin: 6% auto;" action={{ route('register') }} method="post">
+<div class="container" style="margin-top: 20vh">
+  <h1 class="text-center">Create An Account</h1>
+  <form style="width: 55%; margin: 3% auto;" action={{ route('register') }} method="post">
     @csrf
     <div class="row my-3">
       <label for="full_name" class="col-md-2 col-form-label">Full Name</label>

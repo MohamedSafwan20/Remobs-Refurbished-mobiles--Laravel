@@ -1,11 +1,12 @@
 @extends('layouts.root')
 
 @section('content')
-<div class="container">   
-  <form style="width: 55%; margin: 6% auto;" action={{ route('login') }} method="post">
+<div class="container" style="margin-top: 20vh">
+  <h1 class="text-center">Sign In</h1>   
+  <form style="width: 55%; margin: 3% auto;" action={{ route('login') }} method="post">
     @csrf
     @if (session('error'))
-    <div class="bg-danger text-center h-2 py-3">
+    <div class="bg-danger text-center h-2 py-2">
         <span class="text-white">{{ session('error')}}</span>
     </div>
     @endif

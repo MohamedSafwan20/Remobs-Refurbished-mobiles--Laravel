@@ -1,6 +1,7 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3 d-flex justify-content-between shadow fixed-top">
     <a class="navbar-brand fs-3 text-secondary" href={{ route('home') }}>Remobs</a>
+    @if (Route::current()->getName() == 'adminPanel')
+    @else
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -46,6 +47,7 @@
         @endguest
       </ul>
     </div>
+    @endif
   </nav>
 
   {{-- Mobile nav bar menu --}}
