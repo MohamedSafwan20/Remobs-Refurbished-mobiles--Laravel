@@ -31,6 +31,7 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
+
     public function loginView()
     {
         return view('login');
@@ -48,5 +49,12 @@ class AuthController extends Controller
         } else {
             return back()->withInput()->with(['error' => 'wrong username or password']);
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('home');
     }
 }
