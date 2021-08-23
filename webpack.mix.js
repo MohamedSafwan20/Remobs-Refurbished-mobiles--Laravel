@@ -18,3 +18,6 @@ mix.js("resources/js/app.js", "public/js").sass(
         //
     ]
 );
+
+// Auto reloading by running php artisan serve and npm run watch simulataneously
+mix.browserSync("127.0.0.1:8000");

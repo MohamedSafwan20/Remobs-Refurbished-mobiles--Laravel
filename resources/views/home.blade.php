@@ -1,4 +1,4 @@
-@extends('root');
+@extends('layouts.root')
 
 @section('content')
     <h1>Heelo</h1>    

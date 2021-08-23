@@ -9,6 +9,7 @@
     <title>Remobs</title>
 </head>
 <body>
+    @include('layouts.navbar')
     @yield('content');
 
     {{-- Bootstrap js --}}
