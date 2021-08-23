@@ -25,6 +25,12 @@
         @error('password')
         <span class="text-danger">{{ $message }}</span>
         @enderror
+        <div class="form-check mt-4">
+          <input class="form-check-input" type="checkbox" name="remember" id="remember">
+          <label class="form-check-label" for="remember">
+            Remember me
+          </label>
+        </div>
       </div>
     </div>
     <button type="submit" class="btn btn-primary">Log in</button>

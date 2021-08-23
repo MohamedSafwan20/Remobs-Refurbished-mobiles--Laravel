@@ -44,7 +44,7 @@ class AuthController extends Controller
             'password' => 'required|min:8',
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             return redirect()->intended('/');
         } else {
             return back()->withInput()->with(['error' => 'wrong username or password']);

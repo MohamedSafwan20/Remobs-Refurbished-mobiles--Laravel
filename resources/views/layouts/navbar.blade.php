@@ -1,9 +1,11 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3 d-flex justify-content-between">
-    <a class="navbar-brand fs-3 text-secondary" href="#">Remobs</a>
+    <a class="navbar-brand fs-3 text-secondary" href={{ route('home') }}>Remobs</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
       <span class="navbar-toggler-icon"></span>
     </button>
+    @if (Route::current()->getName() == 'register' || Route::current()->getName() == 'login')
+    @else
     <form class="d-none d-lg-block">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search">
@@ -16,6 +18,7 @@
         </div>
       </div>
     </form>
+    @endif
     <div class="d-none d-lg-block">
       <ul class="navbar-nav mr-auto">
       @auth
@@ -72,6 +75,9 @@
       </li>
       @endguest
     </ul>
+    @if (Route::current()->getName() == 'register' || Route::current()->getName() == 'login')
+    
+    @else
     <form class="form-inline my-2 my-lg-0">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search">
@@ -84,4 +90,5 @@
         </div>
       </div>
     </form>
+    @endif
 </div>

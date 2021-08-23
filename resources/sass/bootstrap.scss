@@ -1,4 +1,13 @@
 $primary: #2c2c2c;
 $secondary: #02b030;
 
+.cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+.cards-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 @import "node_modules/bootstrap/scss/bootstrap";
