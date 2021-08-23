@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -28,6 +29,24 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        // return redirect()->route('login');
+        return redirect()->route('login');
+    }
+    public function loginView()
+    {
+        return view('login');
+    }
+
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ]);
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->intended('/');
+        } else {
+            return back()->withInput()->with(['error' => 'wrong username or password']);
+        }
     }
 }
