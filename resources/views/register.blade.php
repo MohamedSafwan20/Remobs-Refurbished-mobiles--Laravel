@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        {{$errors}}
         <form style="width: 55%; margin: 6% auto;" action={{ route('register') }} method="post">
             @csrf
             <div class="row my-3">
