@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3 d-flex justify-content-between">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3 d-flex justify-content-between shadow fixed-top">
     <a class="navbar-brand fs-3 text-secondary" href={{ route('home') }}>Remobs</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
       <span class="navbar-toggler-icon"></span>
