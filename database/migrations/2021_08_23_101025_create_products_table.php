@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->float('price');
             $table->longText('description');
-            $table->float('rating', 1, 1)->nullable();
+            $table->float('rating', 2, 1)->default(0);
             $table->timestamps();
         });
     }

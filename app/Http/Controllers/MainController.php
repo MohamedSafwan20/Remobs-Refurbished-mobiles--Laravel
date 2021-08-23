@@ -11,6 +11,11 @@ class MainController extends Controller
     {
         $newArrivalProducts = Product::orderBy('created_at', 'desc')->get();
 
-        return view('home')->with('newArrivals', $newArrivalProducts);
+        $lowestPriceProducts = Product::orderBy('price', 'asc')->get();
+
+        return view('home', [
+            'newArrivals' => $newArrivalProducts,
+            'lowestPrice' => $lowestPriceProducts
+        ]);
     }
 }
