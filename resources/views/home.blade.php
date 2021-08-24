@@ -11,6 +11,7 @@
         @foreach ($newArrivals as $product)
         <div class="card card-block m-2 shadow-sm" style="min-width: 16rem; max-width: 16rem; min-height: 22rem; max-height: 22rem;">
           <img
+          style="max-height: 50%"
             src={{ asset('storage/product-images/'.$product->image) }}
             class="card-img-top" alt="mobile-img">
           <div class="card-body">
@@ -22,7 +23,7 @@
               </svg>
               <span style="font-size: 16px">{{ $product->rating }}/5</span>
             </h5>
-            <a class="card-title fs-5 text-decoration-none" href={{ asset('login') }}>{{ $product->name }}</a>
+            <a class="card-title fs-5 text-decoration-none" href={{ route('productDetails', ['productId' => $product]) }}>{{ $product->name }}</a>
             @if (strlen($product->description) > 100)
             <p class="card-text">{{ substr($product->description, 0, 100) }}...</p>
             @else
@@ -47,6 +48,7 @@
         @foreach ($lowestPrice as $product)
         <div class="card card-block m-2 shadow-sm" style="min-width: 16rem; max-width: 16rem; min-height: 22rem; max-height: 22rem;">
           <img
+          style="max-height: 50%"
           src={{ asset('storage/product-images/'.$product->image) }}
             class="card-img-top" alt="mobile-img">
           <div class="card-body">
@@ -58,7 +60,7 @@
               </svg>
               <span style="font-size: 16px;">{{ $product->rating }}/5</span>
             </h5>
-            <a class="card-title fs-5 text-decoration-none" href={{ asset('login') }}>{{ $product->name }}</a>
+            <a class="card-title fs-5 text-decoration-none" href={{ route('productDetails', ['productId' => $product]) }}>{{ $product->name }}</a>
             @if (strlen($product->description) > 100)
             <p class="card-text">{{ substr($product->description, 0, 100) }}...</p>
             @else
