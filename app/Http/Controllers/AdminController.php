@@ -9,7 +9,10 @@ class AdminController extends Controller
 {
     public function adminPanelView()
     {
-        return view('adminPanel');
+        if (auth()->user()->is_admin)
+            return view('adminPanel');
+        else
+            return redirect()->route('home');
     }
 
     public function adminPanel(Request $request)

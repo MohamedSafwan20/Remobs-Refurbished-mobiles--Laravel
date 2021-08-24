@@ -26,7 +26,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/admin', [AdminController::class, 'adminPanelView'])->name('adminPanel');
+Route::get('/admin', [AdminController::class, 'adminPanelView'])->name('adminPanel')->middleware('auth');
 Route::post('/admin', [AdminController::class, 'adminPanel']);
 
 // Social Auths
