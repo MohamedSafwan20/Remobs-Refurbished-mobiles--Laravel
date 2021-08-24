@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -56,5 +57,18 @@ class AuthController extends Controller
         Auth::logout();
 
         return redirect()->route('home');
+    }
+
+    public function socialAuthRedirect($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    public function socialAuthCallback($provider)
+    {
+        // Twitter doesn't support stateless
+        $user = Socialite::driver($provider)->stateless()->user();
+
+        dd($user);
     }
 }

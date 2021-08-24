@@ -28,3 +28,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/admin', [AdminController::class, 'adminPanelView'])->name('adminPanel');
 Route::post('/admin', [AdminController::class, 'adminPanel']);
+
+// Social Auths
+Route::get('auth/{provider}', [AuthController::class, 'socialAuthRedirect'])->name('socialAuth');
+Route::get('auth/{provider}/callback', [AuthController::class, 'socialAuthCallback']);
+// End of Social Auths

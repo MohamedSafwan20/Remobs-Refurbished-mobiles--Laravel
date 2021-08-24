@@ -33,6 +33,9 @@
           </label>
         </div>
       </div>
+      <button>
+        <a href={{ route('socialAuth', ['google']) }}>Google</a>
+      </button>
     </div>
     <button type="submit" class="btn btn-primary">Log in</button>
   </form>
