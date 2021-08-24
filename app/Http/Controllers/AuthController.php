@@ -67,8 +67,22 @@ class AuthController extends Controller
     public function socialAuthCallback($provider)
     {
         // Twitter doesn't support stateless
-        $user = Socialite::driver($provider)->stateless()->user();
+        // Ignore: stateless error
+        $userDetailsFromSocialAuth = Socialite::driver($provider)->stateless()->user();
 
-        dd($user);
+        $user = User::where('email', $userDetailsFromSocialAuth->email)->get();
+
+        if (count($user) > 0)
+            return Auth::loginUsingId($user[0]->id) ? redirect()->intended('/') : back()->with('error', 'Something went wrong.');
+        else {
+            $user = User::create([
+                'full_name' => $userDetailsFromSocialAuth->name,
+                'email' => $userDetailsFromSocialAuth->email,
+                'provider' => $provider,
+                'provider_id' => $userDetailsFromSocialAuth->id,
+            ]);
+
+            return Auth::loginUsingId($user->id) ? redirect()->intended('/') : back()->with('error', 'Something went wrong.');
+        }
     }
 }
