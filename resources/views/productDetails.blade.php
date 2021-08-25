@@ -14,7 +14,7 @@
         <p>{{ $product->description }}</p>
         <div class="d-flex">
           <button class="btn btn-primary btn-lg mx-1" style="width: 98%">ADD TO CART</button>
-          <button class="btn btn-secondary btn-lg mx-1" style="width: 98%">BUY NOW</button>
+          <a class="btn btn-secondary btn-lg mx-1" style="width: 98%" href={{ route('paytm', ['amount' => $product->price, 'product' => $product->name ]) }}>BUY NOW</a>
         </div>
       </div>
     </div>

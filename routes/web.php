@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PaytmController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| routes are loaded by the RouteService within a group which
 | contains the "web" middleware group. Now create something great!
 |
 */
@@ -33,10 +34,15 @@ Route::get('/admin', [AdminController::class, 'adminPanelView'])->name('adminPan
 Route::post('/admin', [AdminController::class, 'adminPanel']);
 
 // Social Auths
-Route::get('auth/{provider}', [AuthController::class, 'socialAuthRedirect'])->name('socialAuth');
-Route::get('auth/{provider}/callback', [AuthController::class, 'socialAuthCallback']);
+Route::get('auth/{}', [AuthController::class, 'socialAuthRedirect'])->name('socialAuth');
+Route::get('auth/{}/callback', [AuthController::class, 'socialAuthCallback']);
 // End of Social Auths
 
 Route::get('/product-details', [ProductController::class, 'productDetailsView'])->name('productDetails')->middleware('auth');
 Route::post('/product-details', [ProductController::class, 'productDetails']);
-// Route::post('/product-details', [ProductController::class, 'productDetailsSearch']);
+
+// Paytm Payment Gateway Routes
+Route::get('/pay/{product}/{amount}/paytm', [PaytmController::class, 'paytmPaymentView'])->name('paytm');
+Route::post('/payment/{product}/{amount}', [PaytmController::class, 'makePayment'])->name('makePayment');
+Route::post('/paytm/callback', [PaytmController::class, 'paymentCallback']);
+// End of Paytm Payment Gateway Routes
